@@ -1,36 +1,30 @@
 # Kingston [KGX]
 
-Kingston is a cutting edge cryptocurrency, with many features not available in most other cryptocurrencies.
-- Anonymized transactions using coin mixing technology, we call it _Coin Mixing_.
-- Fast transactions featuring guaranteed zero confirmation transactions, we call it _FastSend_.
-- Decentralized blockchain voting providing for consensus based advancement of the current Masternode
-  technology used to secure the network and provide the above features, each Masternode is secured
-  with collateral of 5,000 KGX
-  
+ 
 ![logo](https://cdn.discordapp.com/attachments/422468140551634955/424229016493359105/kingstonWaller_0.1.1.png)
-
-[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
-[![Join the chat at https://discord.gg/ff5a9rX](https://discord.gg/ff5a9rX)]https://discord.gg/ff5a9rX)
 
 Intro
 ==========================
 Kingston is an anonymous, untraceable and secure hybrid cryptocurrency with POW-POS & Masternodes. 
 The main goal is to develop the cryptocurrency as a single, decentralized payment system for your everyday life. 
 We focus mainly on time, size, anonymity and security of your transactions with helping hand of masternodes to keep the integrity of the network and provide instant and safe transactions. 
-The coin works on C11 algorithm – it's resistant to ASIC and Nicehash attacks, maximally secured and uses small capacity of video memory. 
+The coin works on C11 algorithm – it's resistant to ASIC and Nicehash attacks, maximally secured and uses small capacity of video memory. Kingston has a 1% Premine of 288,000 KGX for bounties, distribution, marketing and development.
 
-Ticker: KGX
-
-Kingston has a 1% Premine of 288,000 KGX for bounties, distribution, marketing and development.
+Kingston is a cutting edge cryptocurrency, with many features not available in most other cryptocurrencies.
+- Anonymized transactions using coin mixing technology, we call it *DarkSend.
+- Fast transactions featuring guaranteed zero confirmation transactions, we call it *InstantX.
+- Decentralized blockchain voting providing for consensus based advancement of the current Masternode
+  technology used to secure the network and provide the above features, each Masternode is secured
+  with collateral of 5,000 KGX
 
 Specifications
 ==========================
-* Total number of coins: 28,800,000 DNR
+* Total number of coins: 28,800,000 KGX
 * Ideal block time: 60 seconds
 * Maturity: 60 blocks
 * Min stake age: 8 hours
 * Cost of Masternode: 5,000 KGX
-Masternode Reward: 50% of current block reward
+* Masternode Reward: 50% of current block reward
 
 Technology
 ==========================
@@ -47,7 +41,7 @@ LINKS
 ==========================
 * Official Website(https://kingston.cash/)
 * Official Discord(https://discord.gg/ff5a9rX/)
-* Denarius Twitter(https://twitter.com/kingston_cash)
+* Kingston Twitter(https://twitter.com/kingston_cash)
 
 OVERVIEW
 ==========================
@@ -62,22 +56,15 @@ OVERVIEW
 <tr><td>Reward Method</td><td>50% Miners/50% Masternodes</td></tr>
 </table>
 
-
-* Proof of Work 25,920 blocks (3 Months) . 25921 - Infinite Blocks PoS only.
-* From Block 10 to 300 (approx 24 hours) the block reward is 1 to avoid instamine. <br>
-**1.5% of total supply Premined for Pre-sale, ICO, development, bountys and airdrop.
-
-### PoS/PoW Block Details
-<table>
-<tr><td>Proof Of Work Phase</td><td>1-25920 Blocks.</td></tr>
-<tr><td>Proof of Stake Phase</td><td>25921-infinite</td></tr>
-</table>
-
-### Staking Methods
-<table>
-<tr><td>Masternodes</td><td>Yes - 25k giro Required</td></tr>
-<tr><td>Wallet Staking</td><td>Yes - 1 to infinite giro</td></tr>
-</table>
+<list>
+<li>Block 2 to 2.880 = 1 KGX (100% Miner)</li>
+<li>Block 2.881 to 86.400 = 30 KGX  (50% Miner | 50% Masternode)</li>
+<li>Block 86.400 to 172.800 = 25 KGX  (25% Miner | 50% Masternode | 25% POS)</li>
+<li>Block 172.801 to 345.600 =  20 KGX (25% Miner | 50% Masternode | 25% POS)</li>
+<li>Block 345.601 to 518.400  = 15 KGX  (20% Miner | 50% Masternode | 30% POS)</li>
+<li>Block 518.401 to 691.200  = 10 KGX  (10% Miner | 50% Masternode | 40% POS)</li>		
+<li>Block 691.201 until max.  = 5 KGX  (0% Miner | 50% Masternode | 50% POS)</li>
+</list>
 
 
 Development process
