@@ -3,7 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/dixicoin-config.h"
+#include "config/kingston-config.h"
 #endif
 
 #include <cstring>
