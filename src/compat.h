@@ -7,7 +7,7 @@
 #define BITCOIN_COMPAT_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/dixicoin-config.h"
+#include "config/kingston-config.h"
 #endif
 
 #ifdef WIN32

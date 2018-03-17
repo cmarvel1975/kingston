@@ -95,7 +95,7 @@ public:
 };
 
 /**
- * DixiCoin RPC command dispatcher.
+ * Kingston RPC command dispatcher.
  */
 class CRPCTable
 {

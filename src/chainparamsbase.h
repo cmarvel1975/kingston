@@ -9,8 +9,8 @@
 #include <vector>
 
 /**
- * CBaseChainParams defines the base parameters (shared between dixicoin-cli and dixicoind)
- * of a given instance of the DixiCoin system.
+ * CBaseChainParams defines the base parameters (shared between kingston-cli and kingstond)
+ * of a given instance of the Kingston system.
  */
 class CBaseChainParams
 {
