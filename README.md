@@ -32,7 +32,7 @@ Technology
 * Stealth addresses
 * Encrypted Messaging
 * Multi-Signature Addresses & TXs
-* Fast 30 Second Block Times
+* Fast 60 Second Block Times
 * New C11 PoW Algorithm for PoW
 * SHA256d Algortihm for PoS Hybrid
 * Full Decentralization
@@ -51,9 +51,9 @@ OVERVIEW
 <tr><td>Type</td><td>PoW - PoS Hybrid*</td></tr>
 <tr><td>Block Time</td><td>60 Seconds</td></tr>
 <tr><td>Difficulty Retargeting</td><td>Every Block</td></tr>
-<tr><td>Max Coin Supply</td><td>75,000,000 giro</td></tr>
+<tr><td>Max Coin Supply</td><td>28,800,000 KGX</td></tr>
 <tr><td>Premine/Initial Supply</td><td>1%*</td></tr>
-<tr><td>Reward Method</td><td>50% Miners/50% Masternodes</td></tr>
+<tr><td>Reward Method</td><td>see below</td></tr>
 </table>
 
 <list>
