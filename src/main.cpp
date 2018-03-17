@@ -2,7 +2,7 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
-// Copyright (c) 2017-2018 The DixiCoin developers
+// Copyright (c) 2017-2018 The Kingston developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -42,7 +42,7 @@ using namespace boost;
 using namespace std;
 
 #if defined(NDEBUG)
-#error "DixiCoin cannot be compiled without assertions."
+#error "Kingston cannot be compiled without assertions."
 #endif
 
 /**
@@ -1617,16 +1617,24 @@ int64_t GetBlockValue(int nHeight)
 
 
     if (nHeight == 0) {
-        nSubsidy = 300000 * COIN;
-    } else if (nHeight <= 720 && nHeight > 0) {
-        nSubsidy = 0 * COIN;
-    } else if (nHeight <= 600000 && nHeight > 72) {
+        nSubsidy = 288000 * COIN;
+    } else if (nHeight <= 2880 && nHeight > 0) {
+        nSubsidy = 1 * COIN;
+    } else if (nHeight <= 86400 && nHeight >= 2880) {
+        nSubsidy = 30 * COIN;
+    } else if (nHeight <= 172800 && nHeight >= 86400) {
+        nSubsidy = 25 * COIN;
+    } else if (nHeight <= 345600 && nHeight >= 172800) {
+        nSubsidy = 20 * COIN;
+    } else if (nHeight <= 518400 && nHeight >= 345600) {
+        nSubsidy = 15 * COIN;
+    } else if (nHeight <= 691200 && nHeight >= 518400) {
+        nSubsidy = 10 * COIN;
+    } else if (nHeight > 691200) {
         nSubsidy = 5 * COIN;
-	} else if (nHeight > 600000) {
-		nSubsidy = 2.5 * COIN;
     } else {
         nSubsidy = 0 * COIN;
-    }
+}
     return nSubsidy;
 }
 
@@ -1642,10 +1650,10 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCou
 	if (nHeight == 0)
 		return 0;
 	
-    if (nHeight < 5000) {
+    if (nHeight <2880) {
         ret = 0;
     } else {
-		ret = blockValue * 0.6;
+		ret = blockValue * 0.5;
 	}
 
     return ret;
@@ -2034,7 +2042,7 @@ static CCheckQueue<CScriptCheck> scriptcheckqueue(128);
 
 void ThreadScriptCheck()
 {
-    RenameThread("dixicoin-scriptch");
+    RenameThread("kingston-scriptch");
     scriptcheckqueue.Thread();
 }
 

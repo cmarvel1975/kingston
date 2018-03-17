@@ -1,6 +1,6 @@
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
-// Copyright (c) 2017-2018 The DixiCoin developers
+// Copyright (c) 2017-2018 The Kingston developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -796,16 +796,24 @@ CAmount CBudgetManager::GetTotalBudget(int nHeight)
 
     //get block value and calculate from that
     CAmount nSubsidy = 0;
-    if (nHeight <= 720 && nHeight > 0) {
+    if (nHeight <= 2880 && nHeight > 0) {
         nSubsidy = 0 * COIN;
-    } else if (nHeight <= 600000 && nHeight >= 720) {
+    } else if (nHeight <= 86400 && nHeight >= 2880) {
+        nSubsidy = 30 * COIN;
+    } else if (nHeight <= 172800 && nHeight >= 86400) {
+        nSubsidy = 25 * COIN;
+    } else if (nHeight <= 345600 && nHeight >= 172800) {
+        nSubsidy = 20 * COIN;
+    } else if (nHeight <= 518400 && nHeight >= 345600) {
+        nSubsidy = 15 * COIN;
+    } else if (nHeight <= 691200 && nHeight >= 518400) {
+        nSubsidy = 15 * COIN;
+    } else if (nHeight > 691200) {
         nSubsidy = 5 * COIN;
-    } else if (nHeight > 600000) {
-        nSubsidy = 2.5 * COIN;
     } else {
         nSubsidy = 0 * COIN;
 }
-		     return ((nSubsidy / 100) * 10) * 1440 * 30;  
+		     return (nSubsidy / 2) * 1440 * 30;  
 }
 
 void CBudgetManager::NewBlock()

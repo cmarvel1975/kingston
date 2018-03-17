@@ -2,7 +2,7 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
-// Copyright (c) 2017-2018 The DixiCoin developers
+// Copyright (c) 2017-2018 The Kingston developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #include "chainparams.h"
@@ -18,6 +18,7 @@ struct SeedSpec6 {
     uint16_t port;
 };
 #include "chainparamsseeds.h"
+
 /**
  * Main network
  */
@@ -46,17 +47,12 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-	(0, uint256("0x000004c24f071662fe3cfbd5cd88976411a1eaafef20c03852264f6aa97de571"))
-	(1, uint256("0x000002f0b45d294ff45681c64c7f3884417f5f8d49807cc2d0cd331126c52591"))
-	(2, uint256("0x000006d7d68a1d7edd8fe8c3351a0727e0b0d6501bbea1756cb037dd6f19f1e9"))
-	(3, uint256("0x000004f549c4ef167b3a98c228dcb7f4df2d7778e7281c96d6e9d0d81d360492"))
-	(4, uint256("0x00000df9bcfb4db4c2a0062b0b5a97f6fbc611314301e2e06df18cfa02394006"))
-	(5, uint256("0x00000ca5ffbaa11e398954f48d5bbf83c8b8e53d250d5b95a348d4972a4019b3"));
+	(0, uint256("0x"));
     
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1519963807, // * UNIX timestamp of last checkpoint block
-    295000,    // * total number of transactions between genesis and last checkpoint
+    1521117500, // * UNIX timestamp of last checkpoint block
+    0,    // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
     2000        // * estimated number of transactions per day after checkpoint
 };
@@ -64,14 +60,14 @@ static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
     boost::assign::map_list_of(0, uint256("0x001"));
 static const Checkpoints::CCheckpointData dataTestnet = {
     &mapCheckpointsTestnet,
-    1454124731,
+    1521117400,
     0,
     250};
 static Checkpoints::MapCheckpoints mapCheckpointsRegtest =
     boost::assign::map_list_of(0, uint256("0x001"));
 static const Checkpoints::CCheckpointData dataRegtest = {
     &mapCheckpointsRegtest,
-    1454124731,
+    1521117300,
     0,
     100};
 class CMainParams : public CChainParams
@@ -86,23 +82,24 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 4-byte int at any alignment.
          */
-        pchMessageStart[0] = 0x00;
-        pchMessageStart[1] = 0x22;
-        pchMessageStart[2] = 0x00;
-        pchMessageStart[3] = 0xaa;
-        vAlertPubKey = ParseHex("03b883ce7982b6296d2f864a51eb0c743722102ebe81896524751b1bd33b174589");
-        nDefaultPort = 61150;
-        bnProofOfWorkLimit = ~uint256(0) >> 20; // DixiCoin starting difficulty is 1 / 2^12
+        pchMessageStart[0] = 0x01;
+        pchMessageStart[1] = 0x23;
+        pchMessageStart[2] = 0x01;
+        pchMessageStart[3] = 0xab;
+        vAlertPubKey = ParseHex("047ac9e742254307b72a377855331b5b35736eaebce49d5f5fae7755ae3de6b80981ce2108dc9a45f926e3c35d266c74b9c3dea0ea6deb363737149b8724a38999");
+        nDefaultPort = 9211;
+        bnProofOfWorkLimit = ~uint256(0) >> 20; // Kingston starting difficulty is 1 / 2^12
         nSubsidyHalvingInterval = 210000;
         nMaxReorganizationDepth = 100;
         nMinerThreads = 0;
-        nTargetTimespan = 1 * 60; // DixiCoin: 1 minute
-        nTargetSpacing = 1 * 60;  // DixiCoin: 1 minute
-        nLastPOWBlock = 259200;
+        nTargetTimespan = 1 * 60; // Kingston: 1 minute
+        nTargetSpacing = 1 * 60;  // Kingston: 1 minute
+        nLastPOWBlock = 518400;
         nMaturity = 60;
         nModifierUpdateBlock = 1;
-		
-        const char* pszTimestamp = "Dixicoin Official Release";
+	
+
+	const char* pszTimestamp = "Dixicoin Official Release";
         CMutableTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -119,17 +116,12 @@ public:
         hashGenesisBlock = genesis.GetHash();
         assert(hashGenesisBlock == uint256("0x000004c24f071662fe3cfbd5cd88976411a1eaafef20c03852264f6aa97de571"));
         assert(genesis.hashMerkleRoot == uint256("0x051012b014cd7c6b3390df44131176e8fb90b1683b354efb60f8f402d3779576"));
+	
+        vSeeds.push_back(CDNSSeedData("0", "0"));
 		
-        vSeeds.push_back(CDNSSeedData("45.63.100.223", "45.63.100.223"));
-        vSeeds.push_back(CDNSSeedData("209.250.231.109", "209.250.231.109"));
-		vSeeds.push_back(CDNSSeedData("209.250.228.79", "209.250.228.79"));
-		vSeeds.push_back(CDNSSeedData("104.238.174.191", "104.238.174.191"));
-		vSeeds.push_back(CDNSSeedData("209.250.231.114", "209.250.231.114"));
-		vSeeds.push_back(CDNSSeedData("209.250.231.66", "209.250.231.66"));
-		
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 30);
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 46);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 90);
-        base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 30+128);
+        base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 80);
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x02)(0x2D)(0x25)(0x33).convert_to_container<std::vector<unsigned char> >();
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x02)(0x21)(0x31)(0x2B).convert_to_container<std::vector<unsigned char> >();
         //  BIP44 coin type is 'TBD'
@@ -145,10 +137,10 @@ public:
         fTestnetToBeDeprecatedFieldRPC = false;
         fHeadersFirstSyncingActive = false;
         nPoolMaxTransactions = 3;
-        strSporkKey = "03b883ce7982b6296d2f864a51eb0c743722102ebe81896524751b1bd33b174589";
+        strSporkKey = "04baa0f1df961d29be81c6cc2c59efcb069e3f87fdbfac6bee157fd8bc2c9e8bec4c18d9b5af4aeed3258912b4aa0bf2b2a0c25fb225da1f3ddd00c0a5293ec693";
         
-        strObfuscationPoolDummyAddress = "DWSbBnzmNkjDVaYHX7vkL1MqD96pRYWtZo";
-        nStartMasternodePayments = 1403728576; //Wed, 25 Jun 2014 20:36:16 GMT
+        strObfuscationPoolDummyAddress = "";
+        nStartMasternodePayments = 1521137500; //Wed, 25 Jun 2014 20:36:16 GMT
     }
     const Checkpoints::CCheckpointData& Checkpoints() const
     {
@@ -166,33 +158,33 @@ public:
     {
         networkID = CBaseChainParams::TESTNET;
         strNetworkID = "test";
-        pchMessageStart[0] = 0x45;
-        pchMessageStart[1] = 0x76;
-        pchMessageStart[2] = 0x65;
-        pchMessageStart[3] = 0xba;
-        vAlertPubKey = ParseHex("000010e83b2703ccf322f7dbd62dd5855ac7c10bd055814ce121ba32607d573b8810c02c0582aed05b4deb9c4b77b26d92428c61256cd42774babea0a073b2ed0c9");
-        nDefaultPort = 62150;
+        pchMessageStart[0] = 0x56;
+        pchMessageStart[1] = 0x37;
+        pchMessageStart[2] = 0x16;
+        pchMessageStart[3] = 0xc0;
+        vAlertPubKey = ParseHex("041d8ad705a1d948672f97244639ff482a3b94e0090d8464a7af255f71f86ba185fc6b0d51927d54d0e1a2f113d1ddb04dfb7cefb68e5231f51da152ce732b4599");
+        nDefaultPort = 9213;
         nMinerThreads = 0;
-        nTargetTimespan = 1 * 60; // DixiCoin: 1 day
-        nTargetSpacing = 1 * 60;  // DixiCoin: 1 minute
-        nLastPOWBlock = 200;
-        nMaturity = 15;
+        nTargetTimespan = 1 * 60; // Kingston: 1 day
+        nTargetSpacing = 1 * 60;  // Kingston: 1 minute
+        nLastPOWBlock = 20000;
+        nMaturity = 60;
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
-        genesis.nTime = 1454124731;
-        genesis.nNonce = 2402015;
+        genesis.nTime = 1521117500;
+        genesis.nNonce = 92384;
         hashGenesisBlock = genesis.GetHash();
         //assert(hashGenesisBlock == uint256("0x0000041e482b9b9691d98eefb48473405c0b8ec31b76df3797c74a78680ef818"));
         vFixedSeeds.clear();
         vSeeds.clear();
         vSeeds.push_back(CDNSSeedData("", ""));
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 139); // Testnet dixicoin addresses start with 'x' or 'y'
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);  // Testnet dixicoin script addresses start with '8' or '9'
-        base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 239);     // Testnet private keys start with '9' or 'c' (Bitcoin defaults)
-        // Testnet dixicoin BIP32 pubkeys start with 'DRKV'
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 107); // Testnet kingston addresses start with 'x' or 'y'
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);  // Testnet kingston script addresses start with '8' or '9'
+        base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 142);     // Testnet private keys start with '9' or 'c' (Bitcoin defaults)
+        // Testnet kingston BIP32 pubkeys start with 'DRKV'
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x3a)(0x80)(0x61)(0xa0).convert_to_container<std::vector<unsigned char> >();
-        // Testnet dixicoin BIP32 prvkeys start with 'DRKP'
+        // Testnet kingston BIP32 prvkeys start with 'DRKP'
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x3a)(0x80)(0x58)(0x37).convert_to_container<std::vector<unsigned char> >();
-        // Testnet dixicoin BIP44 coin type is '1' (All coin's testnet default)
+        // Testnet kingston BIP44 coin type is '1' (All coin's testnet default)
         base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x01)(0x00)(0x00)(0x80).convert_to_container<std::vector<unsigned char> >();
         convertSeed6(vFixedSeeds, pnSeed6_test, ARRAYLEN(pnSeed6_test));
         fRequireRPCPassword = true;
@@ -203,8 +195,8 @@ public:
         fMineBlocksOnDemand = false;
         fTestnetToBeDeprecatedFieldRPC = true;
         nPoolMaxTransactions = 2;
-        strSporkKey = "04348C2F50F90267E64FACC65BFDC9D0EB147D090872FB97ABAE92E9A36E6CA60983E28E741F8E7277B11A7479B626AC115BA31463AC48178A5075C5A9319D4A38";
-        strObfuscationPoolDummyAddress = "y57cqfGRkekRyDRNeJiLtYVEbvhXrNbmox";
+        strSporkKey = "04007aedafeab91aa3ac8b164755f148eb0ade616e251866b8997d901d810d01bc8e616caa11034d74f75fc508b80fe7e6013aed1842d518942a8e0c40bd14305f";
+        strObfuscationPoolDummyAddress = "";
         nStartMasternodePayments = 1420837558; //Fri, 09 Jan 2015 21:05:58 GMT
     }
     const Checkpoints::CCheckpointData& Checkpoints() const
@@ -224,20 +216,20 @@ public:
         networkID = CBaseChainParams::REGTEST;
         strNetworkID = "regtest";
         strNetworkID = "regtest";
-        pchMessageStart[0] = 0xa1;
-        pchMessageStart[1] = 0xcf;
-        pchMessageStart[2] = 0x7e;
-        pchMessageStart[3] = 0xac;
+        pchMessageStart[0] = 0xa2;
+        pchMessageStart[1] = 0xce;
+        pchMessageStart[2] = 0x7f;
+        pchMessageStart[3] = 0xad;
         nSubsidyHalvingInterval = 150;
         nMinerThreads = 1;
-        nTargetTimespan = 24 * 60 * 60; // DixiCoin: 1 day
-        nTargetSpacing = 1 * 60;        // DixiCoin: 1 minutes
+        nTargetTimespan = 24 * 60 * 60; // Kingston: 1 day
+        nTargetSpacing = 1 * 60;        // Kingston: 1 minutes
         bnProofOfWorkLimit = ~uint256(0) >> 1;
         genesis.nTime = 1454124731;
         genesis.nBits = 0x207fffff;
         genesis.nNonce = 12345;
         hashGenesisBlock = genesis.GetHash();
-        nDefaultPort = 51476;
+        nDefaultPort = 9215;
         //assert(hashGenesisBlock == uint256("0x4f023a2120d9127b21bbad01724fdb79b519f593f2a85b60d3d79160ec5f29df"));
         vFixedSeeds.clear(); //! Testnet mode doesn't have any fixed seeds.
         vSeeds.clear();      //! Testnet mode doesn't have any DNS seeds.
@@ -265,7 +257,7 @@ public:
     {
         networkID = CBaseChainParams::UNITTEST;
         strNetworkID = "unittest";
-        nDefaultPort = 51478;
+        nDefaultPort = 9216;
         vFixedSeeds.clear(); //! Unit test mode doesn't have any fixed seeds.
         vSeeds.clear();      //! Unit test mode doesn't have any DNS seeds.
         fRequireRPCPassword = false;

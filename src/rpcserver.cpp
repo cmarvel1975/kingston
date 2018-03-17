@@ -2,7 +2,7 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
-// Copyright (c) 2017-2018 The DixiCoin developers
+// Copyright (c) 2017-2018 The Kingston developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -220,10 +220,10 @@ Value stop(const Array& params, bool fHelp)
     if (fHelp || params.size() > 1)
         throw runtime_error(
             "stop\n"
-            "\nStop DixiCoin server.");
+            "\nStop Kingston server.");
     // Shutdown will take long enough that the response should get back
     StartShutdown();
-    return "DixiCoin server stopping";
+    return "Kingston server stopping";
 }
 
 
@@ -300,16 +300,16 @@ static const CRPCCommand vRPCCommands[] =
         {"hidden", "reconsiderblock", &reconsiderblock, true, true, false},
         {"hidden", "setmocktime", &setmocktime, true, false, false},
 
-        /* DixiCoin features */
-        {"dixicoin", "masternode", &masternode, true, true, false},
-        {"dixicoin", "masternodelist", &masternodelist, true, true, false},
-        {"dixicoin", "mnbudget", &mnbudget, true, true, false},
-        {"dixicoin", "mnbudgetvoteraw", &mnbudgetvoteraw, true, true, false},
-        {"dixicoin", "mnfinalbudget", &mnfinalbudget, true, true, false},
-        {"dixicoin", "mnsync", &mnsync, true, true, false},
-        {"dixicoin", "spork", &spork, true, true, false},
+        /* Kingston features */
+        {"kingston", "masternode", &masternode, true, true, false},
+        {"kingston", "masternodelist", &masternodelist, true, true, false},
+        {"kingston", "mnbudget", &mnbudget, true, true, false},
+        {"kingston", "mnbudgetvoteraw", &mnbudgetvoteraw, true, true, false},
+        {"kingston", "mnfinalbudget", &mnfinalbudget, true, true, false},
+        {"kingston", "mnsync", &mnsync, true, true, false},
+        {"kingston", "spork", &spork, true, true, false},
 #ifdef ENABLE_WALLET
-        {"dixicoin", "obfuscation", &obfuscation, false, false, true}, /* not threadSafe because of SendMoney */
+        {"kingston", "obfuscation", &obfuscation, false, false, true}, /* not threadSafe because of SendMoney */
 
         /* Wallet */
         {"wallet", "addmultisigaddress", &addmultisigaddress, true, false, true},
@@ -574,16 +574,16 @@ void StartRPCThreads()
         unsigned char rand_pwd[32];
         GetRandBytes(rand_pwd, 32);
         uiInterface.ThreadSafeMessageBox(strprintf(
-                                             _("To use dixicoind, or the -server option to dixicoin-qt, you must set an rpcpassword in the configuration file:\n"
+                                             _("To use kingstond, or the -server option to kingston-qt, you must set an rpcpassword in the configuration file:\n"
                                                "%s\n"
                                                "It is recommended you use the following random password:\n"
-                                               "rpcuser=dixicoinrpc\n"
+                                               "rpcuser=kingstonrpc\n"
                                                "rpcpassword=%s\n"
                                                "(you do not need to remember this password)\n"
                                                "The username and password MUST NOT be the same.\n"
                                                "If the file does not exist, create it with owner-readable-only file permissions.\n"
                                                "It is also recommended to set alertnotify so you are notified of problems;\n"
-                                               "for example: alertnotify=echo %%s | mail -s \"DixiCoin Alert\" admin@foo.com\n"),
+                                               "for example: alertnotify=echo %%s | mail -s \"Kingston Alert\" admin@foo.com\n"),
                                              GetConfigFile().string(),
                                              EncodeBase58(&rand_pwd[0], &rand_pwd[0] + 32)),
             "", CClientUIInterface::MSG_ERROR | CClientUIInterface::SECURE);
@@ -1034,14 +1034,14 @@ std::vector<std::string> CRPCTable::listCommands() const
 
 std::string HelpExampleCli(string methodname, string args)
 {
-    return "> dixicoin-cli " + methodname + " " + args + "\n";
+    return "> kingston-cli " + methodname + " " + args + "\n";
 }
 
 std::string HelpExampleRpc(string methodname, string args)
 {
     return "> curl --user myusername --data-binary '{\"jsonrpc\": \"1.0\", \"id\":\"curltest\", "
            "\"method\": \"" +
-           methodname + "\", \"params\": [" + args + "] }' -H 'content-type: text/plain;' http://127.0.0.1:61151/\n";
+           methodname + "\", \"params\": [" + args + "] }' -H 'content-type: text/plain;' http://127.0.0.1:9212/\n";
 }
 
 const CRPCTable tableRPC;

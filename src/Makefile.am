@@ -64,15 +64,15 @@ bin_PROGRAMS =
 TESTS =
 
 if BUILD_BITCOIND
-  bin_PROGRAMS += dixicoind
+  bin_PROGRAMS += kingstond
 endif
 
 if BUILD_BITCOIN_UTILS
-  bin_PROGRAMS += dixicoin-cli dixicoin-tx
+  bin_PROGRAMS += kingston-cli kingston-tx
 endif
 
 .PHONY: FORCE
-# dixicoin core #
+# kingston core #
 BITCOIN_CORE_H = \
   activemasternode.h \
   addrman.h \
@@ -179,7 +179,7 @@ obj/build.h: FORCE
 	  $(abs_top_srcdir)
 libbitcoin_util_a-clientversion.$(OBJEXT): obj/build.h
 
-# server: shared between dixicoind and dixicoin-qt
+# server: shared between kingstond and kingston-qt
 libbitcoin_server_a_CPPFLAGS = $(BITCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS)
 libbitcoin_server_a_SOURCES = \
   addrman.cpp \
@@ -223,7 +223,7 @@ libbitcoin_zmq_a_SOURCES = \
   zmq/zmqpublishnotifier.cpp
 endif
 
-# wallet: shared between dixicoind and dixicoin-qt, but only linked
+# wallet: shared between kingstond and kingston-qt, but only linked
 # when wallet enabled
 
 libbitcoin_wallet_a_CFLAGS = -fPIC
@@ -305,7 +305,7 @@ univalue_libbitcoin_univalue_a_SOURCES = \
   univalue/univalue_escapes.h \
   univalue/univalue.h
 
-# common: shared between dixicoind, and dixicoin-qt and non-server tools
+# common: shared between kingstond, and kingston-qt and non-server tools
 libbitcoin_common_a_CPPFLAGS = $(BITCOIN_INCLUDES)
 libbitcoin_common_a_SOURCES = \
   allocators.cpp \
@@ -361,7 +361,7 @@ libbitcoin_util_a_SOURCES += compat/glibc_compat.cpp
 libbitcoin_util_a_SOURCES += compat/glibcxx_compat.cpp
 endif
 
-# cli: shared between dixicoin-cli and dixicoin-qt
+# cli: shared between kingston-cli and kingston-qt
 libbitcoin_cli_a_CPPFLAGS = $(BITCOIN_INCLUDES)
 libbitcoin_cli_a_SOURCES = \
   rpcclient.cpp \
@@ -371,7 +371,7 @@ nodist_libbitcoin_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
 # bitcoind binary #
-dixicoind_LDADD = \
+kingstond_LDADD = \
   $(LIBBITCOIN_SERVER) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_UNIVALUE) \
@@ -382,40 +382,40 @@ dixicoind_LDADD = \
   $(LIBSECP256K1)
 
 if ENABLE_ZMQ
-dixicoind_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
+kingstond_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
 endif
 
 if ENABLE_WALLET
-dixicoind_LDADD += libbitcoin_wallet.a
+kingstond_LDADD += libbitcoin_wallet.a
 endif
-dixicoind_SOURCES = dixicoind.cpp
+kingstond_SOURCES = kingstond.cpp
 #
 
 if TARGET_WINDOWS
-dixicoind_SOURCES += dixicoind-res.rc
+kingstond_SOURCES += kingstond-res.rc
 endif
 
-dixicoind_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS)
-dixicoind_CPPFLAGS = $(BITCOIN_INCLUDES)
-dixicoind_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+kingstond_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS)
+kingstond_CPPFLAGS = $(BITCOIN_INCLUDES)
+kingstond_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 
-# dixicoin-cli binary #
-dixicoin_cli_LDADD = \
+# kingston-cli binary #
+kingston_cli_LDADD = \
   $(LIBBITCOIN_CLI) \
   $(LIBBITCOIN_UTIL) \
   $(BOOST_LIBS) \
   $(SSL_LIBS) \
   $(CRYPTO_LIBS)
 
-dixicoin_cli_SOURCES = \
-  dixicoin-cli.cpp
+kingston_cli_SOURCES = \
+  kingston-cli.cpp
 
-dixicoin_cli_CPPFLAGS = $(BITCOIN_INCLUDES)
+kingston_cli_CPPFLAGS = $(BITCOIN_INCLUDES)
 #
 
-# dixicoin-tx binary #
-dixicoin_tx_LDADD = \
+# kingston-tx binary #
+kingston_tx_LDADD = \
   $(LIBBITCOIN_UNIVALUE) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_UTIL) \
@@ -424,15 +424,15 @@ dixicoin_tx_LDADD = \
   $(BOOST_LIBS) \
   $(CRYPTO_LIBS)
 
-dixicoin_tx_SOURCES = dixicoin-tx.cpp
-dixicoin_tx_CPPFLAGS = $(BITCOIN_INCLUDES)
+kingston_tx_SOURCES = kingston-tx.cpp
+kingston_tx_CPPFLAGS = $(BITCOIN_INCLUDES)
 #
-dixicoin_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+kingston_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-dixicoin_cli_SOURCES += dixicoin-cli-res.rc
+kingston_cli_SOURCES += kingston-cli-res.rc
 endif
-dixicoin_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+kingston_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if BUILD_BITCOIN_LIBS
 include_HEADERS = script/bitcoinconsensus.h
