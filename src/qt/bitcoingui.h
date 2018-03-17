@@ -6,7 +6,7 @@
 #define BITCOIN_QT_BITCOINGUI_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/dixicoin-config.h"
+#include "config/kingston-config.h"
 #endif
 
 #include "amount.h"
