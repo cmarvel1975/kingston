@@ -1,7 +1,7 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
-// Copyright (c) 2017-2018 The DixiCoin developers
+// Copyright (c) 2017-2018 The Kingston developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -20,18 +20,18 @@ BitcoinUnits::BitcoinUnits(QObject* parent) : QAbstractListModel(parent),
 QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
 {
     QList<BitcoinUnits::Unit> unitlist;
-    unitlist.append(DXC);
-    unitlist.append(mDXC);
-    unitlist.append(uDXC);
+    unitlist.append(KGX);
+    unitlist.append(mKGX);
+    unitlist.append(uKGX);
     return unitlist;
 }
 
 bool BitcoinUnits::valid(int unit)
 {
     switch (unit) {
-    case DXC:
-    case mDXC:
-    case uDXC:
+    case KGX:
+    case mKGX:
+    case uKGX:
         return true;
     default:
         return false;
@@ -41,12 +41,12 @@ bool BitcoinUnits::valid(int unit)
 QString BitcoinUnits::id(int unit)
 {
     switch (unit) {
-    case DXC:
-        return QString("dixicoin");
-    case mDXC:
-        return QString("mdixicoin");
-    case uDXC:
-        return QString::fromUtf8("udixicoin");
+    case KGX:
+        return QString("kingston");
+    case mKGX:
+        return QString("mkingston");
+    case uKGX:
+        return QString::fromUtf8("ukingston");
     default:
         return QString("???");
     }
@@ -56,23 +56,23 @@ QString BitcoinUnits::name(int unit)
 {
     if (Params().NetworkID() == CBaseChainParams::MAIN) {
         switch (unit) {
-        case DXC:
-            return QString("DXC");
-        case mDXC:
-            return QString("mDXC");
-        case uDXC:
-            return QString::fromUtf8("μDXC");
+        case KGX:
+            return QString("KGX");
+        case mKGX:
+            return QString("mKGX");
+        case uKGX:
+            return QString::fromUtf8("μKGX");
         default:
             return QString("???");
         }
     } else {
         switch (unit) {
-        case DXC:
-            return QString("tDXC");
-        case mDXC:
-            return QString("mtDXC");
-        case uDXC:
-            return QString::fromUtf8("μtDXC");
+        case KGX:
+            return QString("tKGX");
+        case mKGX:
+            return QString("mtKGX");
+        case uKGX:
+            return QString::fromUtf8("μtKGX");
         default:
             return QString("???");
         }
@@ -83,23 +83,23 @@ QString BitcoinUnits::description(int unit)
 {
     if (Params().NetworkID() == CBaseChainParams::MAIN) {
         switch (unit) {
-        case DXC:
-            return QString("DXC");
-        case mDXC:
-            return QString("Milli-DXC (1 / 1" THIN_SP_UTF8 "000)");
-        case uDXC:
-            return QString("Micro-DXC (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+        case KGX:
+            return QString("KGX");
+        case mKGX:
+            return QString("Milli-KGX (1 / 1" THIN_SP_UTF8 "000)");
+        case uKGX:
+            return QString("Micro-KGX (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
         }
     } else {
         switch (unit) {
-        case DXC:
-            return QString("TestDXCs");
-        case mDXC:
-            return QString("Milli-TestDXC (1 / 1" THIN_SP_UTF8 "000)");
-        case uDXC:
-            return QString("Micro-TestDXC (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+        case KGX:
+            return QString("TestKGXs");
+        case mKGX:
+            return QString("Milli-TestKGX (1 / 1" THIN_SP_UTF8 "000)");
+        case uKGX:
+            return QString("Micro-TestKGX (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
         }
@@ -109,11 +109,11 @@ QString BitcoinUnits::description(int unit)
 qint64 BitcoinUnits::factor(int unit)
 {
     switch (unit) {
-    case DXC:
+    case KGX:
         return 100000000;
-    case mDXC:
+    case mKGX:
         return 100000;
-    case uDXC:
+    case uKGX:
         return 100;
     default:
         return 100000000;
@@ -123,11 +123,11 @@ qint64 BitcoinUnits::factor(int unit)
 int BitcoinUnits::decimals(int unit)
 {
     switch (unit) {
-    case DXC:
+    case KGX:
         return 8;
-    case mDXC:
+    case mKGX:
         return 5;
-    case uDXC:
+    case uKGX:
         return 2;
     default:
         return 0;
