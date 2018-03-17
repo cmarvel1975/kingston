@@ -57,13 +57,13 @@ OVERVIEW
 </table>
 
 <list>
-<li>Block 2 to 2.880 = 1 KGX (100% Miner)</li>
-<li>Block 2.881 to 86.400 = 30 KGX  (50% Miner | 50% Masternode)</li>
-<li>Block 86.400 to 172.800 = 25 KGX  (25% Miner | 50% Masternode | 25% POS)</li>
-<li>Block 172.801 to 345.600 =  20 KGX (25% Miner | 50% Masternode | 25% POS)</li>
-<li>Block 345.601 to 518.400  = 15 KGX  (20% Miner | 50% Masternode | 30% POS)</li>
-<li>Block 518.401 to 691.200  = 10 KGX  (10% Miner | 50% Masternode | 40% POS)</li>		
-<li>Block 691.201 until max.  = 5 KGX  (0% Miner | 50% Masternode | 50% POS)</li>
+<li>Block       2 to   2.880 = 1 KGX (100% Miner)</li>
+<li>Block   2.881 to  86.400 = 30 KGX  (50% Miner | 50% Masternode)</li>
+<li>Block  86.400 to 172.800 = 25 KGX  (25% Miner | 50% Masternode | 25% POS)</li>
+<li>Block 172.801 to 345.600 = 20 KGX (25% Miner | 50% Masternode | 25% POS)</li>
+<li>Block 345.601 to 518.400 = 15 KGX  (20% Miner | 50% Masternode | 30% POS)</li>
+<li>Block 518.401 to 691.200 = 10 KGX  (10% Miner | 50% Masternode | 40% POS)</li>		
+<li>Block 691.201 until max. = 5 KGX  (0% Miner | 50% Masternode | 50% POS)</li>
 </list>
 
 
