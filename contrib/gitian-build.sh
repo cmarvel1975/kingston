@@ -17,7 +17,7 @@ osx=true
 SIGNER=
 VERSION=
 commit=false
-url=https://github.com/dixicoin-project/dixicoin
+url=https://github.com/kingston-project/kingston
 proc=2
 mem=2000
 lxc=true
@@ -31,7 +31,7 @@ commitFiles=true
 read -d '' usage <<- EOF
 Usage: $scriptName [-c|u|v|b|s|B|o|h|j|m|] signer version
 
-Run this script from the directory containing the dixicoin, gitian-builder, gitian.sigs, and dixicoin-detached-sigs.
+Run this script from the directory containing the kingston, gitian-builder, gitian.sigs, and kingston-detached-sigs.
 
 Arguments:
 signer          GPG signer to sign each build assert file
@@ -39,7 +39,7 @@ version		Version number, commit, or branch to build. If building a commit or bra
 
 Options:
 -c|--commit	Indicate that the version argument is for a commit or branch
--u|--url	Specify the URL of the repository. Default is https://github.com/dixicoin-project/dixicoin
+-u|--url	Specify the URL of the repository. Default is https://github.com/kingston-project/kingston
 -v|--verify 	Verify the gitian build
 -b|--build	Do a gitian build
 -s|--sign	Make signed binaries for Windows and Mac OSX
@@ -232,8 +232,8 @@ echo ${COMMIT}
 if [[ $setup = true ]]
 then
     sudo apt-get install ruby apache2 git apt-cacher-ng python-vm-builder qemu-kvm qemu-utils
-    git clone https://github.com/dixicoin-project/gitian.sigs.git
-    git clone https://github.com/dixicoin-project/dixicoin-detached-sigs.git
+    git clone https://github.com/kingston-project/gitian.sigs.git
+    git clone https://github.com/kingston-project/kingston-detached-sigs.git
     git clone https://github.com/devrandom/gitian-builder.git
     pushd ./gitian-builder
     if [[ -n "$USE_LXC" ]]
@@ -247,7 +247,7 @@ then
 fi
 
 # Set up build
-pushd ./dixicoin
+pushd ./kingston
 git fetch
 git checkout ${COMMIT}
 popd
@@ -256,7 +256,7 @@ popd
 if [[ $build = true ]]
 then
 	# Make output folder
-	mkdir -p ./dixicoin-binaries/${VERSION}
+	mkdir -p ./kingston-binaries/${VERSION}
 
 	# Build Dependencies
 	echo ""
@@ -266,7 +266,7 @@ then
 	mkdir -p inputs
 	wget -N -P inputs $osslPatchUrl
 	wget -N -P inputs $osslTarUrl
-	make -C ../dixicoin/depends download SOURCES_PATH=`pwd`/cache/common
+	make -C ../kingston/depends download SOURCES_PATH=`pwd`/cache/common
 
 	# Linux
 	if [[ $linux = true ]]
@@ -274,9 +274,9 @@ then
             echo ""
 	    echo "Compiling ${VERSION} Linux"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit dixicoin=${COMMIT} --url dixicoin=${url} ../dixicoin/contrib/gitian-descriptors/gitian-linux.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../dixicoin/contrib/gitian-descriptors/gitian-linux.yml
-	    mv build/out/dixicoin-*.tar.gz build/out/src/dixicoin-*.tar.gz ../dixicoin-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit kingston=${COMMIT} --url kingston=${url} ../kingston/contrib/gitian-descriptors/gitian-linux.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../kingston/contrib/gitian-descriptors/gitian-linux.yml
+	    mv build/out/kingston-*.tar.gz build/out/src/kingston-*.tar.gz ../kingston-binaries/${VERSION}
 	fi
 	# Windows
 	if [[ $windows = true ]]
@@ -284,10 +284,10 @@ then
 	    echo ""
 	    echo "Compiling ${VERSION} Windows"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit dixicoin=${COMMIT} --url dixicoin=${url} ../dixicoin/contrib/gitian-descriptors/gitian-win.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../dixicoin/contrib/gitian-descriptors/gitian-win.yml
-	    mv build/out/dixicoin-*-win-unsigned.tar.gz inputs/dixicoin-win-unsigned.tar.gz
-	    mv build/out/dixicoin-*.zip build/out/dixicoin-*.exe ../dixicoin-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit kingston=${COMMIT} --url kingston=${url} ../kingston/contrib/gitian-descriptors/gitian-win.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../kingston/contrib/gitian-descriptors/gitian-win.yml
+	    mv build/out/kingston-*-win-unsigned.tar.gz inputs/kingston-win-unsigned.tar.gz
+	    mv build/out/kingston-*.zip build/out/kingston-*.exe ../kingston-binaries/${VERSION}
 	fi
 	# Mac OSX
 	if [[ $osx = true ]]
@@ -295,10 +295,10 @@ then
 	    echo ""
 	    echo "Compiling ${VERSION} Mac OSX"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit dixicoin=${COMMIT} --url dixicoin=${url} ../dixicoin/contrib/gitian-descriptors/gitian-osx.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../dixicoin/contrib/gitian-descriptors/gitian-osx.yml
-	    mv build/out/dixicoin-*-osx-unsigned.tar.gz inputs/dixicoin-osx-unsigned.tar.gz
-	    mv build/out/dixicoin-*.tar.gz build/out/dixicoin-*.dmg ../dixicoin-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit kingston=${COMMIT} --url kingston=${url} ../kingston/contrib/gitian-descriptors/gitian-osx.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../kingston/contrib/gitian-descriptors/gitian-osx.yml
+	    mv build/out/kingston-*-osx-unsigned.tar.gz inputs/kingston-osx-unsigned.tar.gz
+	    mv build/out/kingston-*.tar.gz build/out/kingston-*.dmg ../kingston-binaries/${VERSION}
 	fi
 	popd
 
@@ -325,27 +325,27 @@ then
 	echo ""
 	echo "Verifying v${VERSION} Linux"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../dixicoin/contrib/gitian-descriptors/gitian-linux.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../kingston/contrib/gitian-descriptors/gitian-linux.yml
 	# Windows
 	echo ""
 	echo "Verifying v${VERSION} Windows"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../dixicoin/contrib/gitian-descriptors/gitian-win.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../kingston/contrib/gitian-descriptors/gitian-win.yml
 	# Mac OSX
 	echo ""
 	echo "Verifying v${VERSION} Mac OSX"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../dixicoin/contrib/gitian-descriptors/gitian-osx.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../kingston/contrib/gitian-descriptors/gitian-osx.yml
 	# Signed Windows
 	echo ""
 	echo "Verifying v${VERSION} Signed Windows"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../dixicoin/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../kingston/contrib/gitian-descriptors/gitian-osx-signer.yml
 	# Signed Mac OSX
 	echo ""
 	echo "Verifying v${VERSION} Signed Mac OSX"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../dixicoin/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../kingston/contrib/gitian-descriptors/gitian-osx-signer.yml
 	popd
 fi
 
@@ -360,10 +360,10 @@ then
 	    echo ""
 	    echo "Signing ${VERSION} Windows"
 	    echo ""
-	    ./bin/gbuild -i --commit signature=${COMMIT} ../dixicoin/contrib/gitian-descriptors/gitian-win-signer.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../dixicoin/contrib/gitian-descriptors/gitian-win-signer.yml
-	    mv build/out/dixicoin-*win64-setup.exe ../dixicoin-binaries/${VERSION}
-	    mv build/out/dixicoin-*win32-setup.exe ../dixicoin-binaries/${VERSION}
+	    ./bin/gbuild -i --commit signature=${COMMIT} ../kingston/contrib/gitian-descriptors/gitian-win-signer.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../kingston/contrib/gitian-descriptors/gitian-win-signer.yml
+	    mv build/out/kingston-*win64-setup.exe ../kingston-binaries/${VERSION}
+	    mv build/out/kingston-*win32-setup.exe ../kingston-binaries/${VERSION}
 	fi
 	# Sign Mac OSX
 	if [[ $osx = true ]]
@@ -371,9 +371,9 @@ then
 	    echo ""
 	    echo "Signing ${VERSION} Mac OSX"
 	    echo ""
-	    ./bin/gbuild -i --commit signature=${COMMIT} ../dixicoin/contrib/gitian-descriptors/gitian-osx-signer.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../dixicoin/contrib/gitian-descriptors/gitian-osx-signer.yml
-	    mv build/out/dixicoin-osx-signed.dmg ../dixicoin-binaries/${VERSION}/dixicoin-${VERSION}-osx.dmg
+	    ./bin/gbuild -i --commit signature=${COMMIT} ../kingston/contrib/gitian-descriptors/gitian-osx-signer.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../kingston/contrib/gitian-descriptors/gitian-osx-signer.yml
+	    mv build/out/kingston-osx-signed.dmg ../kingston-binaries/${VERSION}/kingston-${VERSION}-osx.dmg
 	fi
 	popd
 
