@@ -1,1 +1,1 @@
-<h2><strong>DixiCoin Staging Repository (Version 4.1.0)</strong></h2>
+<h2><strong>Kingston Staging Repository (Version 1.0.0)</strong></h2>
