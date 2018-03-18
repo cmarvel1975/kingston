@@ -100,7 +100,7 @@ public:
         nModifierUpdateBlock = 1;
 	
 
-	const char* pszTimestamp = "DixiCoin Official Release";
+	const char* pszTimestamp = "Dixicoin Official Release";
         CMutableTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
