@@ -2,8 +2,7 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
-// Copyright (c) 2017-2018 The DixiCoin developers
-// Copyright (c) 2018 The Kingston developers
+// Copyright (c) 2017-2018 The Kingston developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #include "chainparams.h"
@@ -114,7 +113,9 @@ public:
         genesis.nTime = 1519956858;
         genesis.nBits = bnProofOfWorkLimit.GetCompact();
         genesis.nNonce = 2077370;
+
         hashGenesisBlock = genesis.GetHash();
+
         assert(hashGenesisBlock == uint256("0x000004c24f071662fe3cfbd5cd88976411a1eaafef20c03852264f6aa97de571"));
         assert(genesis.hashMerkleRoot == uint256("0x051012b014cd7c6b3390df44131176e8fb90b1683b354efb60f8f402d3779576"));
 	
@@ -140,9 +141,9 @@ public:
         fTestnetToBeDeprecatedFieldRPC = false;
         fHeadersFirstSyncingActive = false;
         nPoolMaxTransactions = 3;
-        strSporkKey = "04baa0f1df961d29be81c6cc2c59efcb069e3f87fdbfac6bee157fd8bc2c9e8bec4c18d9b5af4aeed3258912b4aa0bf2b2a0c25fb225da1f3ddd00c0a5293ec693";
+        strSporkKey = "03b883ce7982b6296d2f864a51eb0c743722102ebe81896524751b1bd33b174589";
         
-        strObfuscationPoolDummyAddress = "";
+        strObfuscationPoolDummyAddress = "KsVsjQWjBhrsteLZXXZuVRFT2CFCi8xg8d";
         nStartMasternodePayments = 1521137500; //Wed, 25 Jun 2014 20:36:16 GMT
     }
     const Checkpoints::CCheckpointData& Checkpoints() const
