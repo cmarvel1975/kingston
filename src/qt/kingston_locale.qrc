@@ -1,17 +1,4 @@
 <!DOCTYPE RCC><RCC version="1.0">
     <qresource prefix="/translations">
-        <file alias="ca">locale/kingston_ca.qm</file>
-        <file alias="da">locale/kingston_da.qm</file>
-        <file alias="de">locale/kingston_de.qm</file>
-        <file alias="en">locale/kingston_en.qm</file>
-        <file alias="en_US">locale/kingston_en_US.qm</file>
-        <file alias="es">locale/kingston_es.qm</file>
-        <file alias="fr_FR">locale/kingston_fr_FR.qm</file>
-        <file alias="it">locale/kingston_it.qm</file>
-        <file alias="ja">locale/kingston_ja.qm</file>
-        <file alias="pt">locale/kingston_pt.qm</file>
-        <file alias="ro_RO">locale/kingston_ro_RO.qm</file>
-        <file alias="ru">locale/kingston_ru.qm</file>
-        <file alias="zh_TW">locale/kingston_zh_TW.qm</file>
     </qresource>
 </RCC>
