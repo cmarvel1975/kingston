@@ -93,7 +93,7 @@ bool IsSporkActive(int nSporkID)
 
         if (r == -1) LogPrintf("GetSpork::Unknown Spork %d\n", nSporkID);
     }
-    if (r == -1) r = 4070908800; //return 2099-1-1 by default
+    if (r == -1) r = true; //return 2099-1-1 by default
 
     return r < GetTime();
 }
