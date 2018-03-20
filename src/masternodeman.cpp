@@ -686,7 +686,7 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
         //    LogPrintf("mnb - Got mismatched pubkey and vin\n");
         //    Misbehaving(pfrom->GetId(), 33);
         //    return;
-        }
+        
 
         // make sure it's still unspent
         //  - this is checked later by .check() in many places and by ThreadCheckObfuScationPool()
