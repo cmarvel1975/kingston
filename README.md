@@ -1,7 +1,7 @@
 # Kingston [KGX]
 
  
-![logo](https://cdn.discordapp.com/attachments/422468140551634955/424229016493359105/kingstonWaller_0.1.1.png)
+![logo](https://media.discordapp.net/attachments/424765070208270346/425487210633101313/Kingston_V5.jpg)
 
 Intro
 ==========================
